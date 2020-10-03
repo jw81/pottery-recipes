@@ -82,6 +82,14 @@ GEM
     haml (5.2.0)
       temple (>= 0.8.0)
       tilt
+    haml-lint (0.999.999)
+      haml_lint
+    haml_lint (0.36.0)
+      haml (>= 4.0, < 5.3)
+      parallel (~> 1.10)
+      rainbow
+      rubocop (>= 0.50.0)
+      sysexits (~> 1.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
@@ -187,6 +195,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sysexits (1.2.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -225,6 +234,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   haml
+  haml-lint
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
