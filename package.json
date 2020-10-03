@@ -13,6 +13,11 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint": "^7.4.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "lint": "eslint app/javascript/**/**/*",
+    "fix": "eslint app/javascript/**/**/* --fix"
   }
 }
