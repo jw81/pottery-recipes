@@ -31,3 +31,6 @@ jobs:
           command: |
             yarn install --ignore-engines
             yarn run lint
+      - run:
+          name: Run Tests
+          command: bundle exec rspec spec
