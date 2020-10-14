@@ -1,0 +1,41 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.0-stretch-node
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: postgres:9.4.19
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: pottery_recipes_test
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Bundle Install
+          command: bundle install
+      - run:
+          name: Run Rubocop
+          command: bundle exec rspec spec
+      - run:
+          name: Run Haml-Lint
+          command: bundle exec haml-lint app/views
+      - run:
+          name: Run Javascript Linter
+          command: |
+            yarn install --ignore-engines
+            yarn run lint
+      - run:
+          name: Run SCSS-Linter
+          command: |
+            gem install scss_lint
+            scss-lint app/assets/stylesheets
+      - run:
+          name: Run Tests
+          command: bundle exec rspec spec
