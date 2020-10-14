@@ -23,3 +23,6 @@ jobs:
       - run:
           name: Run Rubocop
           command: bundle exec rspec spec
+      - run:
+          name: Run Haml-Lint
+          command: bundle exec haml-lint app/views
