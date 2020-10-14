@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Run SCSS-Linter
           command: |
-            gem install scss-lint
+            gem install scss_lint
             scss-lint app/assets/stylesheets
       - run:
           name: Run Tests
