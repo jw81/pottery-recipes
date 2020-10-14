@@ -26,3 +26,8 @@ jobs:
       - run:
           name: Run Haml-Lint
           command: bundle exec haml-lint app/views
+      - run:
+          name: Run Javascript Linter
+          command: |
+            yarn install --ignore-engines
+            yarn run lint
