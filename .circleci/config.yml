@@ -6,10 +6,17 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.0-stretch-node
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: postgres:9.4.19
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: pottery_recipes_test
     executor: ruby/default
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: Bundle Install
+          command: bundle install
