@@ -3,6 +3,7 @@ AllCops:
       - 'bin/**/*'
       - 'config/**/*'
       - 'node_modules/**/*'
+      - 'spec/spec_helper.rb'
     NewCops: enable
 
 Style/FrozenStringLiteralComment:
