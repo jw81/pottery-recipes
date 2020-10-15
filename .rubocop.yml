@@ -2,9 +2,14 @@ AllCops:
     Exclude:
       - 'bin/**/*'
       - 'config/**/*'
+      - 'db/migrate/**/*'
+      - 'db/schema.rb'
       - 'node_modules/**/*'
       - 'spec/spec_helper.rb'
     NewCops: enable
+
+Layout/LineLength:
+  Max: 115
 
 Style/FrozenStringLiteralComment:
   Enabled: false
