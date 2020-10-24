@@ -1,0 +1,13 @@
+= form_with model: manufacturer, local: true do |form|
+  - if manufacturer.errors.any?
+    = render partial: 'errors', locals: { manufacturer: manufacturer }
+  %p
+    = form.label :name
+    %br
+    = form.text_field :name
+  %p
+    = form.label :description
+    %br
+    = form.text_area :description
+  %p
+    = form.submit
