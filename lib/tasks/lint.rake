@@ -1,1 +1,0 @@
-system('yarn run lint')
