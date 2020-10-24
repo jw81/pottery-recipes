@@ -21,6 +21,17 @@ jobs:
           name: Bundle Install
           command: bundle install
       - run:
+          name: Update the package manager before installs
+          command: sudo apt-get update
+      - run:
+          name: Install postgresql-client
+          command: sudo apt install postgresql-client
+      - run:
+          name: Database Setup
+          command: |
+            bundle exec rake db:create RAILS_ENV=test
+            bundle exec rake db:migrate RAILS_ENV=test
+      - run:
           name: Run Rubocop
           command: bundle exec rspec spec
       - run:
