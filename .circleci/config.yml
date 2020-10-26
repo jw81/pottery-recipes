@@ -48,5 +48,8 @@ jobs:
             gem install scss_lint
             scss-lint app/assets/stylesheets
       - run:
+          name: Precompile Assets
+          command: RAILS_ENV=test bundle exec rake assets:precompile
+      - run:
           name: Run Tests
           command: bundle exec rspec spec
