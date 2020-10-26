@@ -1,0 +1,11 @@
+%p
+  %strong
+    Name:
+  = @manufacturer.name
+%p
+  %strong
+    Description:
+  = @manufacturer.description
+%p
+  = link_to('Back', manufacturers_path)
+  = link_to('Edit', edit_manufacturer_path(@manufacturer))

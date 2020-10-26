@@ -21,8 +21,19 @@ jobs:
           name: Bundle Install
           command: bundle install
       - run:
+          name: Update the package manager before installs
+          command: sudo apt-get update
+      - run:
+          name: Install postgresql-client
+          command: sudo apt install postgresql-client
+      - run:
+          name: Database Setup
+          command: |
+            bundle exec rake db:create RAILS_ENV=test
+            bundle exec rake db:migrate RAILS_ENV=test
+      - run:
           name: Run Rubocop
-          command: bundle exec rspec spec
+          command: bundle exec rubocop
       - run:
           name: Run Haml-Lint
           command: bundle exec haml-lint app/views
@@ -36,6 +47,9 @@ jobs:
           command: |
             gem install scss_lint
             scss-lint app/assets/stylesheets
+      - run:
+          name: Precompile Assets
+          command: RAILS_ENV=test bundle exec rake assets:precompile
       - run:
           name: Run Tests
           command: bundle exec rspec spec
