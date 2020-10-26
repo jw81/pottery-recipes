@@ -33,7 +33,7 @@ jobs:
             bundle exec rake db:migrate RAILS_ENV=test
       - run:
           name: Run Rubocop
-          command: bundle exec rspec spec
+          command: bundle exec rubocop
       - run:
           name: Run Haml-Lint
           command: bundle exec haml-lint app/views
