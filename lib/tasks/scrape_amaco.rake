@@ -1,6 +1,6 @@
 require 'csv'
 require 'watir'
-require 'amaco_scraper'
+require 'scraper'
 
 urls = [
   'https://www.amaco.com/t/glazes-and-underglazes/underglaze/velvet-underglaze/velvet-underglazes#more',
@@ -30,9 +30,22 @@ namespace :scrape do
   desc 'Gather glaze information from Amaco website.'
 
   task :amaco do
-    scraper = AmacoScraper.new(urls: urls)
+    scraper = Scraper.new(urls: urls)
+
     puts 'Gathering Amaco glaze information...'
-    scraper.scrape
+    scraper.scrape do |browser|
+      glazes = []
+
+      list_items = browser.ul(class: 'product-listing').lis
+      list_items.each do |list_item|
+        glazes << [
+          'amaco',
+          list_item.span(class: 'product-title').text
+        ]
+      end
+      glazes
+    end
+
     scraper.output_to_csv(filepath: 'tmp/scrapes/output/amaco.csv')
     puts 'Done!'
   end
