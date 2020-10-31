@@ -1,6 +1,10 @@
 require 'csv'
-require 'watir'
 require 'scraper'
+begin
+  require 'watir'
+rescue LoadError => e
+  raise e unless ENV['RAILS_ENV'] == 'production'
+end
 
 urls = [
   'https://www.amaco.com/t/glazes-and-underglazes/underglaze/velvet-underglaze/velvet-underglazes#more',
