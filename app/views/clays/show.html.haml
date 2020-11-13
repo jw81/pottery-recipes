@@ -1,0 +1,15 @@
+%p
+  %strong
+    Name:
+  = @clay.name
+%p
+  %strong
+    Description:
+  = @clay.description
+%p
+  %strong
+    Brand Name:
+  = @clay.brand_name
+%p
+  = link_to('Back', clays_path)
+  = link_to('Edit', edit_clay_path(@clay))

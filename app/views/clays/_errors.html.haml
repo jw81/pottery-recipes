@@ -1,0 +1,9 @@
+#error-explanation
+  %h2
+    = pluralize(clay.errors.count, 'error')
+    prohibited
+    this clay from being saved:
+  %ul
+    - clay.errors.full_messages.each do |msg|
+      %li
+        = msg
