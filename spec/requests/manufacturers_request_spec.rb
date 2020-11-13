@@ -81,5 +81,23 @@ RSpec.describe 'Manufacturers', type: :request do
       end
     end
   end
+
+  context 'when destorying a manufacturer' do
+    let!(:test_manufacturer) { create(:manufacturer, name: 'My Cool Manufacturer') }
+
+    it 'destroys and redirects to manufacturers index' do
+      get manufacturers_path
+      expect(response).to render_template(:index)
+      expect(response.body).to include('My Cool Manufacturer')
+
+      delete "/manufacturers/#{test_manufacturer.id}"
+
+      expect(response).to redirect_to(manufacturers_path)
+      follow_redirect!
+
+      expect(response).to render_template(:index)
+      expect(response.body).to_not include('My Cool Manufacturer')
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

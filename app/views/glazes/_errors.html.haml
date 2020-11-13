@@ -1,0 +1,9 @@
+#error-explanation
+  %h2
+    = pluralize(glaze.errors.count, 'error')
+    prohibited
+    this glaze from being saved:
+  %ul
+    - glaze.errors.full_messages.each do |msg|
+      %li
+        = msg

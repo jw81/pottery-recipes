@@ -1,0 +1,13 @@
+= form_with model: glaze, local: true do |form|
+  - if glaze.errors.any?
+    = render partial: 'errors', locals: { glaze: glaze }
+  %p
+    = form.label :name
+    %br
+    = form.text_field :name
+  %p
+    = form.label :brand_name
+    %br
+    = form.text_field :brand_name
+  %p
+    = form.submit
