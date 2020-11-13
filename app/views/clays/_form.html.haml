@@ -1,0 +1,17 @@
+= form_with model: clay, local: true do |form|
+  - if clay.errors.any?
+    = render partial: 'errors', locals: { clay: clay }
+  %p
+    = form.label :name
+    %br
+    = form.text_field :name
+  %p
+    = form.label :description
+    %br
+    = form.text_area :description
+  %p
+    = form.label :brand_name
+    %br
+    = form.text_field :brand_name
+  %p
+    = form.submit
