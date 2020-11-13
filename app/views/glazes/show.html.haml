@@ -1,0 +1,11 @@
+%p
+  %strong
+    Name:
+  = @glaze.name
+%p
+  %strong
+    Brand Name:
+  = @glaze.brand_name
+%p
+  = link_to('Back', glazes_path)
+  = link_to('Edit', edit_glaze_path(@glaze))
