@@ -1,0 +1,35 @@
+%h1
+  Listing Recipes
+%p
+  = link_to('Add New Recipe', new_recipe_path)
+%table
+  %tr
+    %th
+      Name
+    %th
+      Description
+    %th
+      Cone
+    %th
+      Glazes
+    %th
+      Clays
+    %th{ colspan: 3 }
+  - @recipes.each do |recipe|
+    %tr
+      %td
+        = recipe.name
+      %td
+        = recipe.description
+      %td
+        = recipe.cone
+      %td
+        = recipe.glazes.count
+      %td
+        = recipe.clays.count
+      %td
+        = link_to('Show', recipe_path(recipe))
+      %td
+        = link_to('Edit', edit_recipe_path(recipe))
+      %td
+        = link_to('Destroy', recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure?' })

@@ -1,0 +1,27 @@
+%p
+  %strong
+    Name:
+  = @recipe.name
+%p
+  %strong
+    Description:
+  = @recipe.description
+%p
+  %strong
+    Cone:
+  = @recipe.cone
+%p
+  %strong
+    Glazes:
+  - @recipe.glazes.each do |glaze|
+    .glaze
+      = glaze.name
+%p
+  %strong
+    Clays:
+  - @recipe.clays.each do |clay|
+    .clay
+      = clay.name      
+%p
+  = link_to('Back', recipes_path)
+  = link_to('Edit', edit_recipe_path(@recipe))

@@ -1,0 +1,2 @@
+.recipe-clay
+  = form.collection_select(:clay_ids, Clay.all, :id, :name, { prompt: "Select Clay" }, { name: 'recipe[clay_ids][]' })
