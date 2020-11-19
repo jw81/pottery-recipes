@@ -1,0 +1,24 @@
+= form_with model: recipe, local: true do |form|
+  - if recipe.errors.any?
+    = render partial: 'errors', locals: { recipe: recipe }
+  %p
+    = form.label :name
+    %br
+    = form.text_field :name
+  %p
+    = form.label :description
+    %br
+    = form.text_area :description
+  #recipe-clays
+    = render partial: 'clay_selector', locals: { form: form }
+  #recipe-layers
+    - if recipe.layers.present?
+      - recipe.layers.each do |layer|
+        = render partial: 'layer_selectors', locals: { form: form, layer: layer }
+    - else
+      = render partial: 'layer_selectors', locals: { form: form }
+  .add-additional-glaze
+    %a{ href: '#' }
+      = 'Add Another Glaze'
+  %p
+    = form.submit

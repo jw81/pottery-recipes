@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :clays
   resources :glazes
   resources :manufacturers
+  resources :recipes
 end

@@ -1,0 +1,23 @@
+%p
+  %strong
+    Name:
+  = @recipe.name
+%p
+  %strong
+    Description:
+  = @recipe.description
+%p
+  %strong
+    Layers:
+  - @recipe.layers.each do |layer|
+    .glaze
+      = layer.glaze.name
+      = layer.coat_type
+%p
+  %strong
+    Clays:
+  .clay
+    = @recipe.clay.name
+%p
+  = link_to('Back', recipes_path)
+  = link_to('Edit', edit_recipe_path(@recipe))

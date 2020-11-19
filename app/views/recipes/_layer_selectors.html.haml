@@ -1,0 +1,9 @@
+- layer ||= nil
+
+.layer-glaze
+  - if layer.present?
+    = select_tag 'layers[coat_types][]', options_for_select(['Bottom', 'Top'], layer.coat_type)
+    = form.collection_select(:glaze_id, Glaze.all, :id, :name, { prompt: "Select Glaze", selected: layer.glaze.id }, { name: 'layers[glaze_ids][]' })
+  - else
+    = select_tag 'layers[coat_types][]', options_for_select(['Bottom', 'Top'])
+    = form.collection_select(:glaze_id, Glaze.all, :id, :name, { prompt: "Select Glaze" }, { name: 'layers[glaze_ids][]' })
