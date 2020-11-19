@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_215939) do
+ActiveRecord::Schema.define(version: 2020_11_18_141510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,30 @@ ActiveRecord::Schema.define(version: 2020_11_13_215939) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "layers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "glaze_id"
+    t.bigint "recipe_id"
+    t.string "coat_type"
+    t.index ["glaze_id"], name: "index_layers_on_glaze_id"
+    t.index ["recipe_id"], name: "index_layers_on_recipe_id"
+  end
+
   create_table "manufacturers", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "clay_id"
+    t.index ["clay_id"], name: "index_recipes_on_clay_id"
   end
 
   create_table "users", force: :cascade do |t|
