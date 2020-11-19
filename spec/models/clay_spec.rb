@@ -12,11 +12,6 @@ RSpec.describe Clay, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'is not valid without a description' do
-    subject.description = nil
-    expect(subject).to_not be_valid
-  end
-
   it 'is not valid without a brand_name' do
     subject.brand_name = nil
     expect(subject).to_not be_valid
