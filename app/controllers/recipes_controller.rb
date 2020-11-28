@@ -18,14 +18,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    layers = []
-    params[:layers][:glaze_ids].each_with_index do |_layer, index|
-      layers << Layer.new(
-        glaze: Glaze.find(params[:layers][:glaze_ids][index]),
-        coat_type: params[:layers][:coat_types][index]
-      )
-    end
-    @recipe.layers = layers
 
     if @recipe.save
       redirect_to @recipe
@@ -38,16 +30,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      @recipe.layers.delete_all
-      layers = []
-      params[:layers][:glaze_ids].each_with_index do |_layer, index|
-        layers << Layer.new(
-          glaze: Glaze.find(params[:layers][:glaze_ids][index]),
-          coat_type: params[:layers][:coat_types][index]
-        )
-      end
-      @recipe.layers = layers
-
       redirect_to @recipe
     else
       render 'edit'
@@ -64,6 +46,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :clay_id, { layers: [:coat_types, :glaze_ids] })
+    params.require(:recipe).permit(:name, :description)
   end
 end

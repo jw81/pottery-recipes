@@ -1,0 +1,19 @@
+.card
+  %h5.card-header Layers
+  .card-body
+    - if layers.any?
+      %table.table
+        %thead
+          %tr
+            %th{:scope => "col"} Coat Type
+            %th{:scope => "col"} Glaze Name
+        %tbody
+          - layers.each do |layer|
+            %tr
+              %td
+                = layer.coat_type
+              %td
+                = layer.glaze.name
+    - else
+      %p.card-text
+        NOPE
