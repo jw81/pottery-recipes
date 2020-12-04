@@ -46,6 +46,6 @@ class GlazesController < ApplicationController
   private
 
   def glaze_params
-    params.require(:glaze).permit(:name, :brand_name)
+    params.require(:glaze).permit(:name, :brand_name, :product_number)
   end
 end
