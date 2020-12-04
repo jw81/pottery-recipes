@@ -1,0 +1,15 @@
+.card
+  %h5.card-header Clays
+  .card-body
+    - if clay.present?
+      %table.table
+        %thead
+          %tr
+            %th{:scope => "col"} Clay Name
+        %tbody
+          %tr
+            %td
+              = clay.name
+    - else
+      %p.card-text
+        NOPE

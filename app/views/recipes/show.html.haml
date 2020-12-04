@@ -2,12 +2,17 @@
   %strong
     Name:
   = @recipe.name
+
 %p
   %strong
     Description:
   = @recipe.description
+
+= render partial: "recipes/clays/select_clay", locals: { recipe: @recipe }
+.lazy-load#clay{ data: { path: recipe_clays_path(recipe_id: @recipe.id) } }
+
 = render partial: "recipes/layers/add_layer", locals: { recipe: @recipe }
 .lazy-load#layers{ data: { path: recipe_layers_path(recipe_id: @recipe.id) } }
-%p
+-# %p
   = link_to('Back', recipes_path)
   = link_to('Edit', edit_recipe_path(@recipe))

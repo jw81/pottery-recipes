@@ -3,22 +3,22 @@
 
 :ruby
   data = {
-    target: '#add-layer-modal',
+    target: '#select-clay-modal',
     toggle: 'modal'
   }
 %button.btn.btn-primary{ data: data, type: 'button' }
-  Add Layer
+  Select Clay
 :ruby
   aria = {
     hidden: 'true',
-    labelledby: 'add-layer-modal-label'
+    labelledby: 'select-clay-modal-label'
   }
-#add-layer-modal.modal.fade{ aria: aria, role: 'dialog' }
+#select-clay-modal.modal.fade{ aria: aria, role: 'dialog' }
   .modal-dialog{role: 'document'}
     .modal-content
       .modal-header
-        %h5#add-layer-modal-label.modal-title
-          Add Layer
+        %h5#slect-clay-modal-label.modal-title
+          Select Clay
         :ruby
           aria = {
             label: 'Cancel'
@@ -33,13 +33,12 @@
             }
           %span{ aria: aria } ×
       .modal-body
-        = form_for(:layer, url: recipe_layers_path(recipe_id: recipe.id), method: :post, html: { id: 'add-layer-form' }) do |f|
-          = select_tag 'coat_type', options_for_select(['Bottom', 'Top'])
-          = f.collection_select(:glaze_id, Glaze.all, :id, :name, { prompt: "Select Glaze" }, { name: 'glaze_id' })
+        = form_for(:layer, url: recipe_clays_path(recipe_id: recipe.id), method: :post, html: { id: 'select-clay-form' }) do |f|
+          = f.collection_select(:clay_id, Clay.all, :id, :name, { prompt: "Select Clay" }, { name: 'clay_id' })
       .modal-footer
         :ruby
           data = {
             dismiss: 'modal'
           }
         %button.btn.btn-secondary{ data: data, type: 'button' } Cancel
-        %button.btn.btn-primary#my-submit1-btn{ type: 'button' } Add Layer
+        %button.btn.btn-primary#my-submit2-btn{ type: 'button' } Add Clay
