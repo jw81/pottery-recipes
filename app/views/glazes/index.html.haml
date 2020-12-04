@@ -8,6 +8,8 @@
       Name
     %th
       Brand Name
+    %th
+      Product Number
     %th{ colspan: 3 }
   - @glazes.each do |glaze|
     %tr
@@ -15,6 +17,8 @@
         = glaze.name
       %td
         = glaze.brand_name
+      %td
+        = glaze.product_number
       %td
         = link_to('Show', glaze_path(glaze))
       %td
