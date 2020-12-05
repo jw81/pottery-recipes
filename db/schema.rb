@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_173142) do
+ActiveRecord::Schema.define(version: 2020_12_05_211151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_173142) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "coat_type"
+    t.integer "number_of_coats"
     t.index ["glaze_id"], name: "index_layers_on_glaze_id"
     t.index ["recipe_id"], name: "index_layers_on_recipe_id"
   end

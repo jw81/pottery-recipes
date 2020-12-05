@@ -35,6 +35,10 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, layers_attributes: [:id, :glaze_id, :coat_type, :_destroy])
+    params.require(:recipe).permit(
+      :name,
+      :description,
+      layers_attributes: [:id, :glaze_id, :coat_type, :number_of_coats, :_destroy]
+    )
   end
 end
