@@ -5,4 +5,7 @@ class Glaze < ApplicationRecord
   validates_presence_of :product_number
 
   default_scope { order(name: :asc) }
+
+  has_many :layers
+  has_many :recipes, through: :layers
 end

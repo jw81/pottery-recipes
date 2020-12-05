@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'public#index'
   resources :glazes
   resources :manufacturers
+  resources :recipes
 end

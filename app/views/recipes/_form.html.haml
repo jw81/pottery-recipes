@@ -1,0 +1,19 @@
+= form_with model: recipe, local: true do |form|
+  - if recipe.errors.any?
+    = render partial: 'errors', locals: { recipe: recipe }
+  %p
+    = form.label :name
+    %br
+    = form.text_field :name
+  %p
+    = form.label :description
+    %br
+    = form.text_area :description
+  %h3 Layers
+  #layers
+    = form.fields_for :layers do |layer|
+      = render 'layer_fields', f: layer
+    .links
+      = link_to_add_association 'add layer', form, :layers
+  %p
+    = form.submit

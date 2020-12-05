@@ -1,0 +1,14 @@
+%p
+  %strong
+    Name:
+  = @recipe.name
+
+%p
+  %strong
+    Description:
+  = @recipe.description
+
+%p
+  - @recipe.glazes.each do |glaze|
+    %p
+      = glaze.name
