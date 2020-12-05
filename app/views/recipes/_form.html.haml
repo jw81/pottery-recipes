@@ -9,9 +9,11 @@
     = form.label :description
     %br
     = form.text_area :description
-  .recipe-glazes-section
-    = render partial: 'glaze_selector', locals: { form: form }
-  %a#add-glaze{ href: '#' }
-    = 'Add Another Glaze'
+  %h3 Layers
+  #layers
+    = form.fields_for :layers do |layer|
+      = render 'layer_fields', f: layer
+    .links
+      = link_to_add_association 'add layer', form, :layers
   %p
     = form.submit

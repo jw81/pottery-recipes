@@ -1,0 +1,10 @@
+.nested-fields
+  .field
+    = f.label :glaze_id
+    %br
+    = f.collection_select(:glaze_id, Glaze.all, :id, :name, { prompt: "Select Glaze" } )
+  .field
+    = f.label :coat_type
+    %br
+    = f.text_field :coat_type
+  = link_to_remove_association 'remove layer', f
