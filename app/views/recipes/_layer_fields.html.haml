@@ -2,9 +2,9 @@
   .field
     = f.label :glaze_id
     %br
-    = f.collection_select(:glaze_id, Glaze.all, :id, :name, { prompt: "Select Glaze" } )
+    = f.collection_select(:glaze_id, Glaze.all, :id, :name)
   .field
     = f.label :coat_type
     %br
-    = f.collection_select(:coat_type, Layer::COAT_TYPES, :to_s, :to_s, { prompt: "Select Glaze" } )
+    = f.collection_select(:coat_type, Layer::COAT_TYPES, :to_s, :to_s)
   = link_to_remove_association 'remove layer', f
