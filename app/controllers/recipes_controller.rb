@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(
       :name,
       :description,
-      layers_attributes: [:id, :glaze_id, :coat_type, :number_of_coats, :_destroy]
+      layers_attributes: %i[id glaze_id coat_type number_of_coats _destroy]
     )
   end
 end
